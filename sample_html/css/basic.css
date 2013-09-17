@@ -1,0 +1,314 @@
+body {
+  background-color: #FFFEFB;
+  font-family: Arial, sans-serif;
+  min-width: 1024px;
+}
+
+/*
+ * reset boostrap
+ */
+
+.container {
+  width: 1024px;
+  max-width: none !important;
+}
+
+/* Always float the navbar header */
+.navbar-header {
+  float: left;
+}
+
+/* Undo the collapsing navbar */
+.navbar-collapse {
+  display: block !important;
+  height: auto !important;
+  padding-bottom: 0;
+  overflow: visible !important;
+}
+
+.navbar-toggle {
+  display: none;
+}
+
+.navbar-brand {
+  margin-left: -15px;
+}
+
+/* Always apply the floated nav */
+.navbar-nav {
+  float: left;
+  margin: 0;
+}
+.navbar-nav > li {
+  float: left;
+}
+.navbar-nav > li > a {
+  padding: 15px;
+}
+
+/* Redeclare since we override the float above */
+.navbar-nav.navbar-right {
+  float: right;
+}
+
+/* Undo custom dropdowns */
+.navbar .open .dropdown-menu {
+  position: absolute;
+  float: left;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-width: 0 1px 1px;
+  border-radius: 0 0 4px 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+.navbar .open .dropdown-menu > li > a {
+  color: #333;
+}
+.navbar .open .dropdown-menu > li > a:hover,
+.navbar .open .dropdown-menu > li > a:focus,
+.navbar .open .dropdown-menu > .active > a,
+.navbar .open .dropdown-menu > .active > a:hover,
+.navbar .open .dropdown-menu > .active > a:focus {
+  color: #fff !important;
+  background-color: #428bca !important;
+}
+.navbar .open .dropdown-menu > .disabled > a,
+.navbar .open .dropdown-menu > .disabled > a:hover,
+.navbar .open .dropdown-menu > .disabled > a:focus {
+  color: #999 !important;
+  background-color: transparent !important;
+}
+
+
+/*
+ * Coustumed CSS
+ */
+
+.row {
+  margin-top: 10px;
+}
+
+.logo-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.top-nav {
+  background: #256E7D;
+}
+
+.top-nav .nav_sep{
+  background: #AFD6CB;
+}
+
+.top-nav li {
+  /*
+  border-width: 0px 1px 0px 1px;
+  border-color: white;
+  border-style: solid;
+   */
+}
+
+.top-nav li a {
+  color: #DCEAEF;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.top-nav li a:hover {
+  background-color: Transparent;
+  color: #E5FAFF;
+}
+
+.top-nav li a.sep-line {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.top-nav li a.sep-line:hover {
+  background-color: Transparent;
+  color: #DCEAEF;
+  cursor: default;
+}
+
+img.full_width {
+  width: 100%;
+}
+
+.ver-line-left {
+  border-left: 2px solid #03715E;
+}
+
+.ver-line-right {
+  border-right: 1px solid #03715E;
+}
+
+.separator-line {
+  border: none;
+  background: #256E7D;
+  height: 5px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.box-title h4 {
+  color: #586A64;
+  size: 14px;
+}
+
+.box-title p {
+  color: #586A64;
+  size: 14px;
+}
+
+.box-title h4.green {
+  color: #3C766B;
+}
+
+.box-title ul {
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+
+.box-title li { 
+}
+
+.box-title li:before {
+  content: "■ ";
+  color: #256E7D; /* or whatever color you prefer */
+}
+
+p.footer-text {
+  text-align: center;
+}
+
+.clear-div {
+  clear: both;
+}
+
+.dashed-line-h {
+  border-width: 0px 0px 1px 0px;
+  border-style: dashed;
+  border-color: #587867;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.quick-div {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+/*
+ * For intro
+ */
+
+.intro-row {
+  margin-top: 30px;
+}
+
+
+/*
+ * For staff
+ */
+.box-ul {
+  margin-left: -3px;
+  margin-top: 10px;
+}
+
+.box-people {
+  min-height: 128px;
+  margin-top: 5px;
+}
+
+.bg-green {
+  background-color: #F1F9F9;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+.bg-purple {
+  background-color: #F2F6FA;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+.bg-yellow {
+  background-color: #F7FAEF;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.box-people .people-text {
+  margin-left: 100px;
+  min-height: 120px;
+  padding: 5px;
+}
+
+.box-people .people-text p {
+  margin: 0 0 2px;
+}
+
+.box-people .people-text p.name {
+  font-size: 14px;
+  color: #32624E;
+}
+
+.box-people .people-text p.title {
+  font-size: 12px;
+  color: #82ACA7;
+}
+
+.box-people .people-text p.link {
+  font-size: 12px;
+  color: #49C2B3;
+}
+
+.box-people .people-text p.detail {
+  font-size: 12px;
+  color: #B1D1CE;
+}
+
+
+/*
+ * For item
+ */
+
+.box-item .item-text {
+  margin-left: 10px;
+  margin-top: 5px;
+  padding: 5px;
+  font-size: 14px;
+  color: #7399A9;
+}
+
+.box-item .item-text p {
+  margin: 0 0 2px;
+}
+
+.box-item .item-text p.name {
+  font-size: 14px;
+  color: #00B49B;
+}
+
+.box-item .item-text p.title {
+  font-size: 12px;
+  color: #53888B;
+}
+
+.box-item .item-text p.link {
+  font-size: 12px;
+  color: #49C2B3;
+}
+
+.box-item .item-text p.detail {
+  font-size: 12px;
+  color: #92B6B7;
+}
+
