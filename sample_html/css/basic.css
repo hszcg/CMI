@@ -121,7 +121,11 @@ body {
 
 .top-nav li a:hover {
   background-color: Transparent;
-  color: #E5FAFF;
+  color: #FCFCC1;
+}
+
+.top-nav li.active a {
+  color: #ECE1AA;
 }
 
 .top-nav li a.sep-line {
