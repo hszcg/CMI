@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>RC3/IIIS - Tsinghua Univ.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script type='text/javascript' src='js/jquery.js'></script>
+<script type='text/javascript' src='js/jquery.simplemodal.js'></script>
+<script type='text/javascript' src='js/basic.js'></script>
+
+<link rel="stylesheet" type="text/css" href="css/dblue.css" media="screen" />
+<link rel='stylesheet' type='text/css' href='css/basic.css' media='screen' />
+
+<!--[if IE 7]>
+<link type="text/css" href="css/ie7.css" rel="stylesheet" media="screen" />
+<![endif]-->
+<!--[if lt IE 7]>
+<link type='text/css' href='css/basic_ie.css' rel='stylesheet' media='screen' />
+<![endif]-->
+
+
+<script type="text/javascript">
+	function item_filter(str) {
+		$('.box-title').hide();
+		$('.'+str).show();
+		$('.cat-btn .tag').css('background-color', '#A0A0A0');
+		$('#'+str+'-btn').css('background-color', '#D36F03');
+	}
+	
+	$(document).ready(function() {
+	  item_filter('papers')
+	});
+</script>
+
+</head>
+
+<body>
+	<div id="left" class="plates">
+		<ul id="navigation">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="people.html">People</a></li>
+			<li><a href="announcements.html">Announcements</a></li>
+			<li><a href="seminars.html">Seminars</a></li>
+			<li><a href="projects.html">Projects</a></li>
+			<li><a class="active" href="papers.html">Papers/Resources</a></li>
+		</ul>	
+	</div><!-- end left -->
+	
+	<div id="right" class="square-grid">
+		<div id="home" class="page">
+			<div style="min-height: 50px;">
+				<img src="img/logo.png" align="left" style="width: 150px;" alt="ITCS" />
+				<h2>Laboratory For The Study of <font class='red'>R</font>andomness</h2>
+				<br>
+				<h2>in <font class='red'>C</font>omputation and <font class='red'>C</font>ryptographic <font class='red'>C</font>omplexity</h2>
+			</div>
+			<div class="separator-line"></div>
+			<h3>Papers/Resources</h3>
+			<div class="separator-line"></div>
+			<div class="cat-btn">
+				<button id="papers-btn" class="tag" onclick="item_filter('papers')">Papers</button>
+				<button id="videos-btn" class="tag" onclick="item_filter('videos')">Videos</button>
+				<button id="slides-btn" class="tag" onclick="item_filter('slides')">Slides</button>
+			</div>
+			<div style="float: right; display: none;">
+			<div class="box-title">
+				<h3>All</h3>
+			</div>
+			<div class="box-title papers" style="display: none;">
+				<h3>Papers</h3>
+			</div>
+			<div class="box-title videos" style="display: none;">
+				<h3>Videos</h3>
+			</div>
+			<div class="box-title slides" style="display: none;">
+				<h3>Slides</h3>
+			</div>
+			</div>
+			<div class="separator-line"></div>
+			<div class="boxes">
+				<div class="full-width">
+					<div class="box-title papers">
+						<div style="min-height: 120px; margin-top: 5px;">
+							<h4 class='bg-red'>Pseudorandomness for Linear Length Branching Programs and Stack Machines</h4>
+							<p class='title' style="display:none;">Randomness, Derandomization, Lower bounds</p>
+							<p class='title' >Andrej Bogdanov, Periklis A. Papakonstantinou, Andrew Wan</p>
+							<p class='title' >RANDOM, 2012 </p>
+							<div class="cat-btn">
+								<button onclick="window.open('http://iiis.tsinghua.edu.cn/~papakons/pdfs/PRG_BPs.pdf');">Paper</button>
+								<button onclick="window.open('http://iiis.tsinghua.edu.cn/~papakons/pdfs/PRG_BPs.pdf');" style="display:none;">Full Paper</button>
+								<button class="basic-modal" value='0-0'>Details</button>
+								<button class="basic-modal" value='0-1'>Bibtex</button>
+							</div>
+							<div id="basic-modal-content-0-0" class="basic-modal-hide">
+								<h4>Pseudorandomness for Linear Length Branching Programs and Stack Machines</h4>
+								<p class='title' style="display:none;">Randomness, Derandomization, Lower bounds</p>
+								<p class='title' >Andrej Bogdanov, Periklis A. Papakonstantinou, Andrew Wan</p>
+								<p class='title' >RANDOM, 2012 </p>					
+							<li style="margin-top: 5px;">Abstract</li>
+							<p class="details">We show the existence of an explicit pseudorandom generator G of linear stretch such that for every constant k, the output of G is pseudorandom against:</br>
+</br>
+–  Oblivious branching programs over alphabet {0, 1} of length kn and size 2^O(n/logn) on inputs of size n.</br>
+–  Non-oblivious branching programs over alphabet Σ of length kn, provided the size of Σ is a power of 2 and sufficiently large in terms of k.</br>
+–  The model of logarithmic space randomized Turing Machines (over alphabet {0,1}) extended with an unbounded stack that make k passes over their randomness.</br>
+</br>
+The construction of the pseudorandom generator G is the same as in our previous work (FOCS 2011). The results rely on a stronger analysis of the construction. For the last result, we give a length-efficient simulation of such stack machines by non-deterministic branching programs (over large alphabet) whose accepting computations have a unique witness. </p>
+							</div>
+							<div id="basic-modal-content-0-1" class="basic-modal-hide">
+							<li>Bibtex</li>
+							<p class="details">@INPROCEEDINGS{BPW11, </br>
+author = {Andrej Bogdanov and Periklis A. Papakonstantinou and Andrew Wan}, </br>
+title = {Pseudorandomness for Linear Length Branching Programs and Stack Machines}, </br>
+booktitle = {RANDOM}, </br>
+year = {2012}, </br>
+month = {August}, </br>
+pages = {447--458}, </br>
+address = {Boston, USA} </br>
+}</br>
+</p>
+							</div>
+						</div>
+						<div class="clear"></div>
+						<div class="dashed-line-h"></div>
+					</div>
+						<div class="box-title videos">
+							<h4 class='bg-red'>This page is under construction -- entering paper details…</h4>
+						<div style="min-height: 120px; margin-top: 5px; display:none;">
+							<h4 class='bg-red'>Title: Video blah blah</h4>
+							<p class='title'>Tuesday January 1, 2013</p>
+							<li style="margin-top: 5px;">Download: <a href='http://iiis.tsinghua.edu.cn/~papakons/' target="_blank">http://iiis.tsinghua.edu.cn/~papakons/</a></li>
+							<div class="cat-btn">
+								<button class="basic-modal" value='1'>Details</button>
+							</div>
+							<div id="basic-modal-content-1" class="basic-modal-hide">
+								<h4>Title: Video blah blah</h4>
+								<p class='title'>Tuesday January 1, 2013</p>
+								<li style="margin-top: 5px;">Download: <a href='http://iiis.tsinghua.edu.cn/~papakons/' target="_blank">http://iiis.tsinghua.edu.cn/~papakons/</a></li>
+							<li>About</li>
+							<p class="details"  style="margin-top: 10px;">blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...</p>
+							</div>
+						</div>
+						<div class="clear"></div>				
+						<div class="dashed-line-h"></div>
+					</div>	
+						<div class="box-title slides">
+							<h4 class='bg-red'>This page is under construction -- entering paper details…</h4>
+							<div style="min-height: 120px; margin-top: 5px; display:none;">
+								<h4 class='bg-red'>Title: Slide blah blah</h4>
+								<p class='title'>Tuesday January 1, 2013</p>
+								<li style="margin-top: 5px;">Download: <a href='http://iiis.tsinghua.edu.cn/~papakons/' target="_blank">http://iiis.tsinghua.edu.cn/~papakons/</a></li>
+								<div class="cat-btn">
+									<button class="basic-modal" value='2'>Details</button>
+								</div>
+								<div id="basic-modal-content-2" class="basic-modal-hide">
+									<h4>Title: Slide blah blah</h4>
+									<p class='title'>Tuesday January 1, 2013</p>
+									<li style="margin-top: 5px;">Download: <a href='http://iiis.tsinghua.edu.cn/~papakons/' target="_blank">http://iiis.tsinghua.edu.cn/~papakons/</a></li>
+								<li>About</li>
+								<p class="details"  style="margin-top: 10px;">blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...blabla...</p>
+								</div>
+						</div>
+						<div class="clear"></div>				
+						<div class="dashed-line-h"></div>
+					</div>
+						<p align="center" style="margin-top: 10px;">
+							<img src="img/button/first.png" href='#' />
+							<img src="img/button/prev.png" style="margin-left: 8px;" href='#' />
+							<a href='#' style="margin-left: 8px;">1</a>
+							<img src="img/button/next.png" style="margin-left: 8px;" href='#' />
+							<img src="img/button/last.png" style="margin-left: 8px;" href='#' /></p>
+					</div>
+				</div>			
+			<div class="clear"></div>
+			<div class="separator-line"></div>	
+			<img src="img/logo3.png" align="right" style="width: 80px; margin-top: -10px; margin-left: -80px;" alt="ITCS" />
+			<p align="center">Copyright &copy; IIIS, Tsinghua University. All rights reserved.</a></p>
+		</div><!-- end home page -->
+	</div><!-- end right -->	
+</body>
+
+</html>
