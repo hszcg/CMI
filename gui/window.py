@@ -29,7 +29,7 @@ structArr = {
                 {'id':'details', 'tip':'blah&nbsp;blah&nbsp;this&nbsp;may&nbsp;include&nbsp;HTML&nbsp;links&nbsp;and&nbsp;tags', 'size': 20},
                 ],
             },
-        'stuff': {
+        'staff': {
             'member': [
                 {'id':'name', 'tip':'Guang&nbsp;Yang', 'size': 1},
                 {'id':'type', 'tip':'Faculty&nbsp;OR&nbsp;Graduate&nbsp;OR&nbsp;Undergraduate', 'size': 1},
@@ -41,7 +41,7 @@ structArr = {
                 ],
             'alumi': [
                 {'id':'name', 'tip':'Wei&nbsp;Yu', 'size': 1},
-                {'id':'role', 'tip':'Faculty&nbsp;OR&nbsp;Graduate&nbsp;OR&nbsp;Undergraduate', 'size': 1},
+                {'id':'role', 'tip':'Assistant&nbsp;Professor&nbsp;OR&nbsp;MS&nbsp;Student&nbsp;OR&nbsp;PhD&nbsp;Student', 'size': 1},
                 {'id':'current_affiliation', 'tip':'CTIC,&nbsp;Aarhus&nbsp;University', 'size': 1},
                 {'id':'current_homepage', 'tip':'http://pure.au.dk/portal/en/persons/id(f644ac9a-1af0-4ebc-863c-d9e909fbae5f).html', 'size': 2},
                 {'id':'interest', 'tip':'Joking', 'size': 1},
@@ -52,6 +52,7 @@ structArr = {
         'teaching': {
             'lecture': [
                 {'id':'title', 'tip':'Representations&nbsp;etc', 'size': 2},
+                {'id':'type', 'tip':'Graduate&nbsp;Course&nbsp;etc', 'size': 2},
                 {'id':'date', 'tip':'Tuesday&nbsp;January&nbsp;1,&nbsp;2013', 'size': 1},
                 {'id':'venue', 'tip':'1-222&nbsp;FIT&nbsp;Building', 'size': 1},
                 {'id':'abstract', 'tip':'blabla', 'size': 4},
@@ -80,7 +81,7 @@ structArr = {
                 {'id':'venue', 'tip':'1-222&nbsp;FIT&nbsp;Building', 'size': 1},
                 {'id':'abstract', 'tip':'blabla', 'size': 4},
                 {'id':'urls', 'tip':'http://link1.com,http://link2.com', 'size': 2},
-                {'id':'author', 'tip':'Jia&nbsp;Xu', 'size': 1},
+                {'id':'author', 'tip':'Eric&nbsp;Allende#http://link1.com,&nbsp;Shiteng&nbsp;Chen#http://link2.com', 'size': 3},
                 ],
             },
         'projects': {
