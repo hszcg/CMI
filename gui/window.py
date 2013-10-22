@@ -279,6 +279,8 @@ class MainWin(QtGui.QWidget):
                 break
             index += 1
         shutil.copy2(fileName, tarName)
+        
+        tarName = "%s%s/%s%d.%s" % ("img/", self.keyA, base, index, ext)
         self.imgPathItem.setPlainText(tarName)
 
 
