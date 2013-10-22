@@ -9,7 +9,7 @@ FILE_NAME_ARR = [
         {'id': 'staff', 'name': 'Staff', 'link': 'staff.html'},
         {'id': 'teaching', 'name': 'Teaching', 'link': 'teaching.html'},
         {'id': 'papers', 'name': 'Publication', 'link': 'publication.html'},
-        {'id': 'projects', 'name': 'Projects', 'link': 'projects.html'},
+        {'id': 'competition', 'name': 'Competition', 'link': 'competition.html'},
         {'id': 'software', 'name': 'Software', 'link': 'software.html'},
         {'id': 'opening', 'name': 'Opening', 'link': 'opening.html'},
         ]
@@ -380,20 +380,20 @@ def trans_author_str(in_str):
     return ', '.join(temp_arr)
 
 
-def gen_body_projects(p, data):
+def gen_body_competition(p, data):
     hstr = ''
     hstr += \
             '''
         <div class="box-title box-ul">
           <ul>
-            <li>Projects</li>
+            <li>Competition</li>
           </ul>
         </div>
             '''
 
     hstr += '<div style="min-height: 120px; margin-top: 5px;">'
     hstr += '<div class="col-xs-12 ver-line-left">'
-    for t in data['projects']['project']:
+    for t in data['competition']['item']:
         if t == []:
             continue
         hstr += '<div class="box-item">'
@@ -421,26 +421,28 @@ def gen_body_papers(p, data):
             '''
       <div class="row intro-row">
         <div class="box-title box-ul">
+          <div id="so_netw" class="quick-div">
+            <img src="images/publications_11.gif" align="left" alt="CMI" style="float:none;height:32px;" />
+            <span> All Publications </span>
+          </div>
           <div id="ma_trans" class="quick-div">
             <img src="images/publications_07.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> Machine Translation </span>
           </div>
           <div id="im_proc" class="quick-div">
-            <img src="images/publications_09.gif" align="left" alt="CMI" style="float:none;height:32px;" />
+            <img src="images/publications_05.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> Image Processing </span>
           </div>
           <div id="ma_learn" class="quick-div">
-            <img src="images/publications_03.gif" align="left" alt="CMI" style="float:none;height:32px;" />
+            <img src="images/publications_09.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> Machine Learning </span>
           </div>
+          <!--
           <div id="sp_reco" class="quick-div">
             <img src="images/publications_05.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> Speech Recognition </span>
           </div>
-          <div id="so_netw" class="quick-div">
-            <img src="images/publications_11.gif" align="left" alt="CMI" style="float:none;height:32px;" />
-            <span> Social Network </span>
-          </div>
+          -->
         </div>
             '''
 
@@ -462,7 +464,6 @@ def gen_body_papers(p, data):
             <div class="item-text">
               <p class="name">%s</p>
               <p class="title">%s</p>
-              <p class="title">%s</p>
               <p class="title">%s, %s</p>
               <p class="link"><a href="%s" target="_blank">%s</a></p>
               <p class="detail">More Details</p>
@@ -470,7 +471,7 @@ def gen_body_papers(p, data):
             <div class="clear-div"></div>
             <div class="dashed-line-h"></div>
           </div>
-                ''' % (t['title'], t['category'], trans_author_str(t['author']), t['date'], t['venue'], t['paper_url'], t['fullpaper_url'])
+                ''' % (t['title'], trans_author_str(t['author']), t['date'], t['venue'], t['paper_url'], t['fullpaper_url'])
 
     hstr += \
             '''

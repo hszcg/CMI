@@ -84,8 +84,8 @@ structArr = {
                 {'id':'author', 'tip':'Eric&nbsp;Allende#http://link1.com,&nbsp;Shiteng&nbsp;Chen#http://link2.com', 'size': 3},
                 ],
             },
-        'projects': {
-            'project': [
+        'competition': {
+            'item': [
                 {'id':'title', 'tip':'Halloween', 'size': 2},
                 {'id':'author', 'tip':'Eric&nbsp;Allende#http://link1.com,&nbsp;Shiteng&nbsp;Chen#http://link2.com', 'size': 3},
                 {'id':'date', 'tip':'January&nbsp;1,&nbsp;2013', 'size': 1},
