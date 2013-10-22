@@ -12,6 +12,16 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen" />
     <link rel='stylesheet' type='text/css' href='css/basic.css' media='screen' />
     
+<script type="text/javascript">
+$(function() {
+    $('a.expand-click').on('click', function(e) {
+        e.preventDefault();
+        var act_div = $(this).closest('.collapse-group').find('.hidden-div');
+        act_div.slideToggle();
+    });
+});
+</script>
+        
   </head>
   <body>
     <div class="container">
@@ -23,7 +33,7 @@
       <div class="row top-nav">
         <ul class="nav navbar-nav">
           <li><a class='sep-line' >|</a></li>
-            <li ><a href="index.html">Home</a></li><li><a class="sep-line">|</a></li><li ><a href="intro.html">Introduction</a></li><li><a class="sep-line">|</a></li><li ><a href="staff.html">Staff</a></li><li><a class="sep-line">|</a></li><li class="active"><a href="teaching.html">Teaching</a></li><li><a class="sep-line">|</a></li><li ><a href="publication.html">Publication</a></li><li><a class="sep-line">|</a></li><li ><a href="competition.html">Competition</a></li><li><a class="sep-line">|</a></li><li ><a href="software.html">Software</a></li><li><a class="sep-line">|</a></li><li ><a href="opening.html">Opening</a></li><li><a class="sep-line">|</a></li>
+            <li ><a href="index.html">Home</a></li><li><a class="sep-line">|</a></li><li ><a href="intro.html">Introduction</a></li><li><a class="sep-line">|</a></li><li ><a href="announcements.html">Announcements</a></li><li><a class="sep-line">|</a></li><li ><a href="staff.html">Staff</a></li><li><a class="sep-line">|</a></li><li class="active"><a href="teaching.html">Teaching</a></li><li><a class="sep-line">|</a></li><li ><a href="publication.html">Publication</a></li><li><a class="sep-line">|</a></li><li ><a href="competition.html">Competition</a></li><li><a class="sep-line">|</a></li><li ><a href="software.html">Software</a></li><li><a class="sep-line">|</a></li><li ><a href="seminars.html">Seminars</a></li><li><a class="sep-line">|</a></li><li ><a href="opening.html">Opening</a></li><li><a class="sep-line">|</a></li>
         </ul>
       </div>
             <div class="row intro-row">
@@ -34,22 +44,31 @@
         </div>
         <div class="col-xs-12 ver-line-left">
             
-          <div class="box-item">
+          <div class="box-item collapse-group">
             <div class="item-text bg-green">
               <div class="col-xs-4">
-                <p>Machine Learning and Machine Translation</p>
-              </div>
-              <div class="col-xs-2">
-                <p>Graduate Course</p>
+                <p><a href="http://iiis.tsinghua.edu.cn/en/show-3239-1.html" target=_blank >Machine Learning and Machine Translation</a></p>
               </div>
               <div class="col-xs-2">
                 <p>Jia Xu</p>
               </div>
               <div class="col-xs-2">
-                <p>Tsinghua</p>
+                <p>Fall 2012</p>
               </div>
               <div class="col-xs-2">
-                <p>Fall 2012</p>
+                <p>Graduate Course</p>
+              </div>
+              <div class="col-xs-2">
+                <a class="details expand-click" href="#">View details &raquo;</a>
+              </div>
+              <div class="clear-div"></div>
+            </div>
+            <div class="item-text bg-green hidden-div" style="display:none;">
+              <div class="col-xs-10">
+                <p>Machine learning is a scientific discipline concerned with the design and development of algorithms that allow computers to evolve behaviors like human being. It is the core of the artificial intelligence and is rapidly applied to various areas nowadays, such as search and social network. This course will introduce the fundamental of machine learning techniques and explain its implication in the machine translation. We aim to allow students to master key skills and to be able to develop novel algorithms in machine learning.</p>
+              </div>
+              <div class="col-xs-2">
+                <p>Tsinghua</p>
               </div>
               <div class="clear-div"></div>
             </div>
@@ -62,13 +81,10 @@
         </div>
         <div class="col-xs-12 ver-line-left">
             
-          <div class="box-item">
+          <div class="box-item collapse-group">
             <div class="item-text bg-yellow">
               <div class="col-xs-4">
                 <p>Machine Learning and Machine Translation</p>
-              </div>
-              <div class="col-xs-2">
-                <p>More Details</p>
               </div>
               <div class="col-xs-2">
                 <p>Jia Xu</p>
@@ -78,6 +94,19 @@
               </div>
               <div class="col-xs-2">
                 <p>Fall 2013</p>
+              </div>
+              <div class="col-xs-2">
+                <a class="details expand-click" href="#">View details &raquo;</a>
+              </div>
+              <div class="clear-div"></div>
+            </div>
+            <div class="item-text bg-yellow hidden-div" style="display:none;">
+              <div class="col-xs-10">
+                <p>One-way functions (OWFs) and pseudorandom generators (PRGs) are two of the most important primtives of modern cryptography. Blum, Micali [BM82] and Yao [Yao82] independently gave an elegant construction of PRGs from one-way permutations (OWPs) with optimal parameters (linear seed length and a single call to the underlying OWP) which was known as the BMY generator. Later constructions were known for the more general cases such as from known regular OWFs [GKL93], from unknown regular OWFs [HHR06] and from any OWFs [HILL99,VZ12], but most of them are missing from the cryptography textbook partially due to the quite involved proofs.
+In this talk, I will briefly introduce previous works and then present a new approach to the PRG constructions from (both known and unknown) regular one-way function via the computational unpredictability (a useful notion in leakage-resilient cryptography) that either simplify the proofs given in the cryptography textbook or improve the current start-of-the-art constructions. These constructions are optimal in seed length and the number of OWF calls (by matching the recent lower bounds of [Holenstein and Sinha,FOCS12]). If time permits, i will also discuss why the HHR's randomized iterate doesn't work for an arbitrary OWF and extension of the technique to building universal one-way hash functions (UOWHFs) from regular one-way functions.
+No prerequisites are required.</p>
+              </div>
+              <div class="col-xs-2">
               </div>
               <div class="clear-div"></div>
             </div>
@@ -90,7 +119,43 @@
         </div>
         <div class="col-xs-12 ver-line-left">
           <div class="box-item">
-            <img class="full_width" src="img/teaching/teachings1.png" alt="FIT"/>
+            
+          <div id="myCarousel" class="carousel slide">
+          <!-- Indicators -->
+            <ol class="carousel-indicators">
+            
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+                </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            
+          <div class="item active">
+            <div class="fill" style="background-image:url('img/teaching/teachings1.png');"></div>
+            <div class="carousel-caption">
+              <h1>Jia Xu</h1>
+            </div>
+          </div>
+                
+          <div class="item">
+            <div class="fill" style="background-image:url('img/teaching/intro0.png');"></div>
+            <div class="carousel-caption">
+              <h1>Another pic</h1>
+            </div>
+          </div>
+                
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="icon-next"></span>
+        </a>
+    </div>
+            
           </div>
         </div>
             </div>

@@ -12,6 +12,16 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen" />
     <link rel='stylesheet' type='text/css' href='css/basic.css' media='screen' />
     
+<script type="text/javascript">
+$(function() {
+    $('a.expand-click').on('click', function(e) {
+        e.preventDefault();
+        var act_div = $(this).closest('.collapse-group').find('.hidden-div');
+        act_div.slideToggle();
+    });
+});
+</script>
+        
   </head>
   <body>
     <div class="container">
@@ -23,7 +33,7 @@
       <div class="row top-nav">
         <ul class="nav navbar-nav">
           <li><a class='sep-line' >|</a></li>
-            <li ><a href="index.html">Home</a></li><li><a class="sep-line">|</a></li><li ><a href="intro.html">Introduction</a></li><li><a class="sep-line">|</a></li><li ><a href="staff.html">Staff</a></li><li><a class="sep-line">|</a></li><li ><a href="teaching.html">Teaching</a></li><li><a class="sep-line">|</a></li><li ><a href="publication.html">Publication</a></li><li><a class="sep-line">|</a></li><li ><a href="competition.html">Competition</a></li><li><a class="sep-line">|</a></li><li class="active"><a href="software.html">Software</a></li><li><a class="sep-line">|</a></li><li ><a href="opening.html">Opening</a></li><li><a class="sep-line">|</a></li>
+            <li ><a href="index.html">Home</a></li><li><a class="sep-line">|</a></li><li ><a href="intro.html">Introduction</a></li><li><a class="sep-line">|</a></li><li ><a href="announcements.html">Announcements</a></li><li><a class="sep-line">|</a></li><li ><a href="staff.html">Staff</a></li><li><a class="sep-line">|</a></li><li ><a href="teaching.html">Teaching</a></li><li><a class="sep-line">|</a></li><li ><a href="publication.html">Publication</a></li><li><a class="sep-line">|</a></li><li ><a href="competition.html">Competition</a></li><li><a class="sep-line">|</a></li><li class="active"><a href="software.html">Software</a></li><li><a class="sep-line">|</a></li><li ><a href="seminars.html">Seminars</a></li><li><a class="sep-line">|</a></li><li ><a href="opening.html">Opening</a></li><li><a class="sep-line">|</a></li>
         </ul>
       </div>
             <div class="row intro-row">
@@ -34,22 +44,29 @@
         </div>
         <div class="col-xs-12 ver-line-left">
             
-          <div class="box-item">
+          <div class="box-item collapse-group">
             <div class="item-text bg-yellow">
               <div class="col-xs-4">
                 <p>Bilingual Sentence Segmentation</p>
               </div>
               <div class="col-xs-2">
-                <p>Links</p>
-              </div>
-              <div class="col-xs-2">
                 <p>Jia Xu</p>
               </div>
               <div class="col-xs-2">
-                <p></p>
+                <p>2006</p>
               </div>
               <div class="col-xs-2">
-                <p>2006</p>
+              </div>
+              <div class="col-xs-2">
+                <a class="details expand-click" href="#">View details &raquo;</a>
+              </div>
+              <div class="clear-div"></div>
+            </div>
+            <div class="item-text bg-yellow hidden-div" style="display:none;">
+              <div class="col-xs-10">
+                <p>Splitting bilingual long sentence pairs into short pairs using the lexicon information, which helps to reduce the word alignment training time and memory requirement and to extract the parallel sentences from the parallel documents as well.</p>
+              </div>
+              <div class="col-xs-2">
               </div>
               <div class="clear-div"></div>
             </div>

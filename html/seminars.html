@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CMI/IIIS - Tsinghua Univ.</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <script type='text/javascript' src='js/jquery.js'></script>
+    <script type='text/javascript' src='js/bootstrap.js'></script>
+    <script type='text/javascript' src='js/basic.js'></script>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen" />
+    <link rel='stylesheet' type='text/css' href='css/basic.css' media='screen' />
+    
+<script type="text/javascript">
+$(function() {
+    $('a.expand-click').on('click', function(e) {
+        e.preventDefault();
+        var act_div = $(this).closest('.collapse-group').find('.hidden-div');
+        act_div.slideToggle();
+    });
+});
+</script>
+        
+  </head>
+  <body>
+    <div class="container">
+      <div class="row logo-row">
+        <div id="logo">
+          <img src="images/logo.png" align="left" alt="CMI" />
+        </div>
+      </div>
+      <div class="row top-nav">
+        <ul class="nav navbar-nav">
+          <li><a class='sep-line' >|</a></li>
+            <li ><a href="index.html">Home</a></li><li><a class="sep-line">|</a></li><li ><a href="intro.html">Introduction</a></li><li><a class="sep-line">|</a></li><li ><a href="announcements.html">Announcements</a></li><li><a class="sep-line">|</a></li><li ><a href="staff.html">Staff</a></li><li><a class="sep-line">|</a></li><li ><a href="teaching.html">Teaching</a></li><li><a class="sep-line">|</a></li><li ><a href="publication.html">Publication</a></li><li><a class="sep-line">|</a></li><li ><a href="competition.html">Competition</a></li><li><a class="sep-line">|</a></li><li ><a href="software.html">Software</a></li><li><a class="sep-line">|</a></li><li class="active"><a href="seminars.html">Seminars</a></li><li><a class="sep-line">|</a></li><li ><a href="opening.html">Opening</a></li><li><a class="sep-line">|</a></li>
+        </ul>
+      </div>
+            
+        <div class="box-title box-ul">
+          <ul>
+            <li>Seminars</li>
+          </ul>
+        </div>
+
+        <div class="col-xs-12 ver-line-left">
+            
+                <div class="box-item collapse-group">
+                  <div class="item-text">
+                    <p class="name">tricky talks</p>
+                    <p class="title">2013 Oct</p>
+                    <p class="title">Speaker: <a href="http://cs.au.dk/~angela/" target="_blank">Angela Zottarel (Aarhus)</a></p>
+                    <p class="title">Place: Tsinghua, Time: 2pm</p>
+                    <a class="details expand-click" href="#">View details &raquo;</a>
+                  </div>
+                <div class="item-text hidden-div" style="display:none;"><li style="margin-top: 5px;">Abstract</li><p class="details">One-way functions (OWFs) and pseudorandom generators (PRGs) are two of the most important primtives of modern cryptography. Blum, Micali [BM82] and Yao [Yao82] independently gave an elegant construction of PRGs from one-way permutations (OWPs) with optimal parameters (linear seed length and a single call to the underlying OWP) which was known as the BMY generator. Later constructions were known for the more general cases such as from known regular OWFs [GKL93], from unknown regular OWFs [HHR06] and from any OWFs [HILL99,VZ12], but most of them are missing from the cryptography textbook partially due to the quite involved proofs.
+In this talk, I will briefly introduce previous works and then present a new approach to the PRG constructions from (both known and unknown) regular one-way function via the computational unpredictability (a useful notion in leakage-resilient cryptography) that either simplify the proofs given in the cryptography textbook or improve the current start-of-the-art constructions. These constructions are optimal in seed length and the number of OWF calls (by matching the recent lower bounds of [Holenstein and Sinha,FOCS12]). If time permits, i will also discuss why the HHR's randomized iterate doesn't work for an arbitrary OWF and extension of the technique to building universal one-way hash functions (UOWHFs) from regular one-way functions.
+No prerequisites are required.</p><li style="margin-top: 5px;">Bio</li><p class="details">In 2010, I graduated in mathematics as an Algant scholar, receiving a joint master degree from Padova and Leiden University. I joined the cryptography group at Aarhus university in August 2010, as a PhD student. My main supervisor is Jesper Buus Nielsel. My research field is mainly focused on hardness assumptions and leakage resilient public key cryptography. In summer 2012, I spent three months in Tokyo, doing an internship in Okamoto's group at NTT laboratories. From November 2012 to April 2013 I visited Leonid Reyzin at Boston University. I will hand-in my dissertation at the end of October 2013.</p></div>
+                  <div class="clear-div"></div>
+                  <div class="dashed-line-h"></div>
+                </div>
+                </div>
+      <div class="row">
+        <div class="separator-line"></div>
+        <a href="http://www.iiis.tsinghua.edu.cn">
+        <img src="images/logo-thu.png" align="right" style="width: 80px; margin-top: -10px; margin-left: -80px;" alt="CMI">
+        </a>
+        <p class="footer-text">Copyright &copy; 2013 CMI, Tsinghua University. All rights reserved.</p>
+      </div>
+    </div>
+            
+  </body>
+</html>
+            

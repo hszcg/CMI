@@ -12,8 +12,27 @@ structArr = {
                 {'id':'title', 'tip':'Enter&nbsp;Title&nbsp;Here.', 'size': 2},
                 {'id':'details', 'tip':'blah&nbsp;blah&nbsp;this&nbsp;may&nbsp;include&nbsp;HTML&nbsp;links&nbsp;and&nbsp;tags', 'size': 20},
                 ],
-            'news': [
-                {'id':'title', 'tip':'Enter&nbsp;Title&nbsp;Here.', 'size': 2},
+            },
+        'announcements': {
+            'announcement': [
+                {'id':'title', 'tip':'Congratulations&nbsp;to&nbsp;Guang&nbsp;Yang&nbsp;for&nbsp;winning&nbsp;the&nbsp;new&nbsp;scientist&nbsp;Tsinghua&nbsp;award!', 'size': 3},
+                {'id':'date', 'tip':'January&nbsp;1,&nbsp;2013', 'size': 1},
+                {'id':'details', 'tip':'blah&nbsp;blah&nbsp;this&nbsp;may&nbsp;include&nbsp;HTML&nbsp;links&nbsp;and&nbsp;tags', 'size': 8},
+                ],
+            },
+        'seminars': {
+            'seminar': [
+                {'id':'title', 'tip':'Representations&nbsp;etc', 'size': 2},
+                {'id':'date', 'tip':'Tuesday&nbsp;January&nbsp;1,&nbsp;2013', 'size': 1},
+                {'id':'time', 'tip':'12pm', 'size': 1},
+                {'id':'venue', 'tip':'1-222&nbsp;FIT&nbsp;Building', 'size': 1},
+                {'id':'abstract', 'tip':'blabla', 'size': 4},
+                {'id':'extra', 'tip':'blabla', 'size': 4},
+                {'id':'urls', 'tip':'http://link1.com,http://link2.com', 'size': 2},
+                {'id':'speaker', 'tip':'Bangsheng&nbsp;Tang', 'size': 1},
+                {'id':'speaker_homepage', 'tip':'http://link.com', 'size': 1},
+                {'id':'speaker_bio', 'tip':'blabla', 'size': 5},
+                {'id':'speaker_photo', 'tip':'image/weiyu.jpg', 'size': -1},
                 ],
             },
         'intro': {
@@ -32,7 +51,7 @@ structArr = {
         'staff': {
             'member': [
                 {'id':'name', 'tip':'Guang&nbsp;Yang', 'size': 1},
-                {'id':'type', 'tip':'Faculty&nbsp;OR&nbsp;Graduate&nbsp;OR&nbsp;Undergraduate', 'size': 1},
+                {'id':'type', 'tip':'Faculty&nbsp;OR&nbsp;Affiliated&nbsp;Faculty&nbsp;OR&nbsp;Graduate&nbsp;OR&nbsp;Undergraduate', 'size': 1},
                 {'id':'role', 'tip':'Assistant&nbsp;Professor&nbsp;OR&nbsp;MS&nbsp;Student&nbsp;OR&nbsp;PhD&nbsp;Student', 'size': 1},
                 {'id':'homepage', 'tip':'http://itcs.tsinghua.edu.cn/guangyang/', 'size': 2},
                 {'id':'interest', 'tip':'Cryptography,&nbsp;Derandomization', 'size': 1},
@@ -71,6 +90,7 @@ structArr = {
                 {'id':'speaker_photo', 'tip':'image/weiyu.jpg', 'size': -1},
                 ],
             'photo': [
+                {'id':'title', 'tip':'Representations&nbsp;etc', 'size': 2},
                 {'id':'photo', 'tip':'images/teachings.png', 'size': -1},
                 ],
             },
@@ -105,13 +125,19 @@ structArr = {
                 {'id':'abstract', 'tip':'blabla', 'size': 6},
                 {'id':'bibtex', 'tip':'blabla', 'size': 5},
                 ],
+            'patent': [
+                {'id':'title', 'tip':'blabla', 'size': 2},
+                {'id':'category', 'tip':'MT&nbsp;OR&nbsp;IP&nbsp;OR&nbsp;ML&nbsp;OR&nbsp;SR&nbsp;OR&nbsp;SN', 'size': 1},
+                {'id':'author', 'tip':'Eric&nbsp;Allende#http://link1.com,&nbsp;Shiteng&nbsp;Chen#http://link2.com', 'size': 3},
+                {'id':'abstract', 'tip':'blabla', 'size': 6},
+                ],
             },
         }
 
 FILE_NAME = 'data.json'
 BACKUP_NAME = 'data.json.bak'
 IMG_DIR = '../html/img/'
-
+HTML_IMG_DIR = 'img/'
 
 class MainWin(QtGui.QWidget):
     def __init__(self):
@@ -280,7 +306,7 @@ class MainWin(QtGui.QWidget):
             index += 1
         shutil.copy2(fileName, tarName)
         
-        tarName = "%s%s/%s%d.%s" % ("img/", self.keyA, base, index, ext)
+        tarName = "%s%s/%s%d.%s" % (HTML_IMG_DIR, self.keyA, base, index, ext)
         self.imgPathItem.setPlainText(tarName)
 
 

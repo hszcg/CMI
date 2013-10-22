@@ -6,11 +6,13 @@ RELEASE_DIR = '../html/'
 FILE_NAME_ARR = [
         {'id': 'home', 'name': 'Home', 'link': 'index.html'},
         {'id': 'intro', 'name': 'Introduction', 'link': 'intro.html'},
+        {'id': 'announcements', 'name': 'Announcements', 'link': 'announcements.html'},
         {'id': 'staff', 'name': 'Staff', 'link': 'staff.html'},
         {'id': 'teaching', 'name': 'Teaching', 'link': 'teaching.html'},
         {'id': 'papers', 'name': 'Publication', 'link': 'publication.html'},
         {'id': 'competition', 'name': 'Competition', 'link': 'competition.html'},
         {'id': 'software', 'name': 'Software', 'link': 'software.html'},
+        {'id': 'seminars', 'name': 'Seminars', 'link': 'seminars.html'},
         {'id': 'opening', 'name': 'Opening', 'link': 'opening.html'},
         ]
 HOME_LIMIT = 3
@@ -70,11 +72,14 @@ def gen_body_home(p, data):
             '''
 
     index = 0
-    for t in data['home']['news']:
-        hstr += '<li>%s</li>' % t['title']
-        index += 1
-        if index >= HOME_LIMIT:
-            break
+    for t in data['announcements']['announcement']:
+        if t == []:
+            continue
+        else:
+            hstr += '<li>%s</li>' % t['title']
+            index += 1
+            if index >= HOME_LIMIT:
+                break
 
     hstr += \
             '''
@@ -122,6 +127,97 @@ def gen_body_intro(p, data):
     return hstr
 
 
+def gen_body_seminars(p, data):
+    hstr = ''
+    hstr += \
+            '''
+        <div class="box-title box-ul">
+          <ul>
+            <li>Seminars</li>
+          </ul>
+        </div>
+
+        <div class="col-xs-12 ver-line-left">
+            '''
+
+    for t in data['seminars']['seminar']:
+        if t == []:
+            continue
+        hstr += \
+                '''
+                <div class="box-item collapse-group">
+                  <div class="item-text">
+                    <p class="name">%s</p>
+                    <p class="title">%s</p>
+                    <p class="title">Speaker: <a href="%s" target="_blank">%s</a></p>
+                    <p class="title">Place: %s, Time: %s</p>
+                    <a class="details expand-click" href="#">View details &raquo;</a>
+                  </div>
+                ''' % (t['title'], t['date'], t['speaker_homepage'], t['speaker'], t['venue'], t['time'])
+
+        hstr += '<div class="item-text hidden-div" style="display:none;">'
+        hstr += '<li style="margin-top: 5px;">Abstract</li>'
+        hstr += '<p class="details">%s</p>' % t['abstract']
+        if t['speaker_bio'] != '':
+            hstr += '<li style="margin-top: 5px;">Bio</li>'
+            hstr += '<p class="details">%s</p>' % t['speaker_bio']
+        if t['urls'] != '':
+            hstr += '<li style="margin-top: 5px;">Links</li>'
+            for u in t['urls'].split(','):
+                hstr += '<p class="details"><a href="%s" target="_blank">%s</a></p>' % (u, u)
+        hstr += '</div>'
+
+        hstr += \
+                '''
+                  <div class="clear-div"></div>
+                  <div class="dashed-line-h"></div>
+                </div>
+                '''
+        
+    hstr += '</div>'
+
+    return hstr
+
+
+def gen_body_announcements(p, data):
+    hstr = ''
+    hstr += '<div class="row intro-row">'
+
+    for t in data['announcements']['announcement']:
+        hstr += \
+                '''
+            <div class="box-title box-ul">
+              <ul>
+                <li>%s</li>
+              </ul>
+            </div>
+            <div class="col-xs-12 ver-line-left">
+                ''' % (t['title'])
+
+        hstr += \
+                '''
+          <div class="box-item">
+            <div class="item-text bg-green">
+              <div class="col-xs-8">
+                <p>%s</p>
+              </div>
+              <div class="col-xs-2">
+              </div>
+              <div class="col-xs-2">
+                <p>%s</p>
+              </div>
+              <div class="clear-div"></div>
+            </div>
+          </div>
+                ''' % (t['details'], t['date'])
+        
+        hstr += '</div>'
+
+    hstr += '</div>'
+
+    return hstr
+
+
 def gen_body_opening(p, data):
     hstr = ''
     t = data['opening']['content'][0]
@@ -152,7 +248,7 @@ def gen_body_staff(p, data):
     hstr = ''
     hstr += '<div class="row intro-row">'
 
-    type_list = ['Faculty', 'Graduate', 'Undergraduate']
+    type_list = ['Faculty', 'Affiliated Faculty', 'Graduate', 'Undergraduate']
 
     for g in type_list:
         hstr += \
@@ -237,9 +333,13 @@ def gen_body_teaching(p, data):
             '''
 
     for t in data['teaching']['lecture']:
+        title_html = t['title']
+        if t['urls'] != '':
+            title_html = '<a href="%s" target=_blank >%s</a>' % (t['urls'].split(',')[0], t['title'])
+
         hstr += \
                 '''
-          <div class="box-item">
+          <div class="box-item collapse-group">
             <div class="item-text bg-green">
               <div class="col-xs-4">
                 <p>%s</p>
@@ -254,12 +354,21 @@ def gen_body_teaching(p, data):
                 <p>%s</p>
               </div>
               <div class="col-xs-2">
+                <a class="details expand-click" href="#">View details &raquo;</a>
+              </div>
+              <div class="clear-div"></div>
+            </div>
+            <div class="item-text bg-green hidden-div" style="display:none;">
+              <div class="col-xs-10">
+                <p>%s</p>
+              </div>
+              <div class="col-xs-2">
                 <p>%s</p>
               </div>
               <div class="clear-div"></div>
             </div>
           </div>
-                ''' % (t['title'], t['type'], t['speaker'], t['venue'], t['date'])
+                ''' % (title_html, t['speaker'], t['date'], t['type'], t['abstract'], t['venue'])
 
     hstr += '</div>'
 
@@ -276,15 +385,12 @@ def gen_body_teaching(p, data):
     for t in data['teaching']['seminar']:
         hstr += \
                 '''
-          <div class="box-item">
+          <div class="box-item collapse-group">
             <div class="item-text bg-yellow">
               <div class="col-xs-4">
                 <p>%s</p>
               </div>
               <div class="col-xs-2">
-                <p>More Details</p>
-              </div>
-              <div class="col-xs-2">
                 <p>%s</p>
               </div>
               <div class="col-xs-2">
@@ -292,15 +398,25 @@ def gen_body_teaching(p, data):
               </div>
               <div class="col-xs-2">
                 <p>%s</p>
+              </div>
+              <div class="col-xs-2">
+                <a class="details expand-click" href="#">View details &raquo;</a>
+              </div>
+              <div class="clear-div"></div>
+            </div>
+            <div class="item-text bg-yellow hidden-div" style="display:none;">
+              <div class="col-xs-10">
+                <p>%s</p>
+              </div>
+              <div class="col-xs-2">
               </div>
               <div class="clear-div"></div>
             </div>
           </div>
-                ''' % (t['title'], t['speaker'], t['venue'], t['date'])
+                ''' % (t['title'], t['speaker'], t['venue'], t['date'], t['abstract'])
 
     hstr += '</div>'
 
-    t = data['teaching']['photo'][0]
     hstr += \
             '''
         <div class="box-title box-ul">
@@ -310,11 +426,69 @@ def gen_body_teaching(p, data):
         </div>
         <div class="col-xs-12 ver-line-left">
           <div class="box-item">
-            <img class="full_width" src="%s" alt="FIT"/>
+            '''
+
+    index = 0
+    id_str = \
+            '''
+          <div id="myCarousel" class="carousel slide">
+          <!-- Indicators -->
+            <ol class="carousel-indicators">
+            '''
+    bg_str = \
+            '''
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            '''
+
+    for t in data['teaching']['photo']:
+        active_str = ''
+        if index == 0:
+            active_str = ' class="active"'
+        id_str += \
+                '''
+          <li data-target="#myCarousel" data-slide-to="%s"%s></li>
+                ''' % (index, active_str)
+
+        active_str = ''
+        if index == 0:
+            active_str = ' active'
+        bg_str += \
+                '''
+          <div class="item%s">
+            <div class="fill" style="background-image:url('%s');"></div>
+            <div class="carousel-caption">
+              <h1>%s</h1>
+            </div>
+          </div>
+                ''' % (active_str, t['photo'], t['title'])
+        
+        index += 1
+
+    id_str += '</ol>'
+
+    bg_str += \
+            '''
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="icon-next"></span>
+        </a>
+    </div>
+            '''
+
+    hstr += id_str
+    hstr += bg_str
+
+    hstr += \
+            '''
           </div>
         </div>
-            ''' % t['photo']
-
+            '''
     hstr += '</div>'
 
     return hstr
@@ -342,27 +516,34 @@ def gen_body_software(p, data):
 
         hstr += \
                 '''
-          <div class="box-item">
+          <div class="box-item collapse-group">
             <div class="item-text %s">
               <div class="col-xs-4">
                 <p>%s</p>
               </div>
               <div class="col-xs-2">
-                <p>Links</p>
-              </div>
-              <div class="col-xs-2">
                 <p>%s</p>
               </div>
               <div class="col-xs-2">
                 <p>%s</p>
               </div>
               <div class="col-xs-2">
+              </div>
+              <div class="col-xs-2">
+                <a class="details expand-click" href="#">View details &raquo;</a>
+              </div>
+              <div class="clear-div"></div>
+            </div>
+            <div class="item-text %s hidden-div" style="display:none;">
+              <div class="col-xs-10">
                 <p>%s</p>
+              </div>
+              <div class="col-xs-2">
               </div>
               <div class="clear-div"></div>
             </div>
           </div>
-                ''' % (color, t['title'], trans_author_str(t['author']), t['venue'], t['date'])
+                ''' % (color, t['title'], trans_author_str(t['author']), t['date'], color,t['abstract'])
 
     hstr += '</div>'
 
@@ -420,28 +601,28 @@ def gen_body_papers(p, data):
     hstr += \
             '''
       <div class="row intro-row">
-        <div class="box-title box-ul">
-          <div id="so_netw" class="quick-div">
+        <div id="pub_nav" class="box-title btn-group">
+          <button value="all" class="btn btn-default quick-div active">
             <img src="images/publications_11.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> All Publications </span>
-          </div>
-          <div id="ma_trans" class="quick-div">
+          </button>
+          <button value="MT" class="btn btn-default quick-div">
             <img src="images/publications_07.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> Machine Translation </span>
-          </div>
-          <div id="im_proc" class="quick-div">
+          </button>
+          <button value="IP" class="btn btn-default quick-div">
             <img src="images/publications_05.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> Image Processing </span>
-          </div>
-          <div id="ma_learn" class="quick-div">
+          </button>
+          <button value="ML" class="btn btn-default quick-div">
             <img src="images/publications_09.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> Machine Learning </span>
-          </div>
+          </button>
           <!--
-          <div id="sp_reco" class="quick-div">
+          <button value="SR" class="btn btn-default quick-div">
             <img src="images/publications_05.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> Speech Recognition </span>
-          </div>
+          </button>
           -->
         </div>
             '''
@@ -460,24 +641,70 @@ def gen_body_papers(p, data):
     for t in data['papers']['paper']:
         hstr += \
                 '''
-          <div class="box-item">
+          <div class="box-item collapse-group" value="%s">
             <div class="item-text">
               <p class="name">%s</p>
               <p class="title">%s</p>
               <p class="title">%s, %s</p>
               <p class="link"><a href="%s" target="_blank">%s</a></p>
-              <p class="detail">More Details</p>
+              <a class="details expand-click" href="#">View details &raquo;</a>
             </div>
+                ''' % (t['category'], t['title'], trans_author_str(t['author']), t['date'], t['venue'], t['paper_url'], t['fullpaper_url'])
+
+        hstr += '<div class="item-text hidden-div" style="display:none;">'
+        hstr += '<li style="margin-top: 5px;">Abstract</li>'
+        hstr += '<p class="details">%s</p>' % t['abstract']
+        if t['bibtex'] != '':
+            hstr += '<li style="margin-top: 5px;">Bibtex</li>'
+            hstr += '<p class="details">%s</p>' % t['bibtex']
+        hstr += '</div>'
+
+        hstr += \
+            '''
             <div class="clear-div"></div>
             <div class="dashed-line-h"></div>
           </div>
-                ''' % (t['title'], trans_author_str(t['author']), t['date'], t['venue'], t['paper_url'], t['fullpaper_url'])
+            '''
+
+    hstr += '</div>'
 
     hstr += \
             '''
+        <div class="box-title box-ul">
+          <ul>
+            <li>Patent</li>
+          </ul>
         </div>
-      </div>
+
+        <div class="col-xs-12 ver-line-left">
             '''
+
+    for t in data['papers']['patent']:
+        hstr += \
+                '''
+          <div class="box-item collapse-group" value="%s">
+            <div class="item-text">
+              <p class="name">%s</p>
+              <p class="title">%s</p>
+              <a class="details expand-click" href="#">View details &raquo;</a>
+            </div>
+                ''' % (t['category'], t['title'], trans_author_str(t['author']))
+
+        hstr += '<div class="item-text hidden-div" style="display:none;">'
+        hstr += '<li style="margin-top: 5px;">Abstract</li>'
+        hstr += '<p class="details">%s</p>' % t['abstract']
+        hstr += '</div>'
+
+        hstr += \
+            '''
+            <div class="clear-div"></div>
+            <div class="dashed-line-h"></div>
+          </div>
+            '''
+
+    hstr += '</div>'
+
+    hstr += '</div>'
 
     return hstr
 
@@ -536,13 +763,43 @@ def gen_header(p):
 def gen_js(p):
     # TODO
     hstr = ''
+    if p['id'] in ['papers', 'seminars', 'teaching', 'software']:
+        hstr += \
+        '''
+<script type="text/javascript">
+$(function() {
+    $('a.expand-click').on('click', function(e) {
+        e.preventDefault();
+        var act_div = $(this).closest('.collapse-group').find('.hidden-div');
+        act_div.slideToggle();
+    });
+});
+</script>
+        '''
+
     if p['id'] == 'papers':
         hstr += \
         '''
 <script type="text/javascript">
+$(function() {
+    $('#pub_nav button').on('click', function(e) {
+        var this_div = $(this);
+        $('#pub_nav button').removeClass('active');
+        this_div.addClass('active');
+
+        var active_val = this_div.val();
+        if (active_val === 'all') {
+            $('.box-item').show();
+        } else {
+            $('.box-item').hide();
+            $('.box-item[value='+active_val+']').show();
+        }
+    });
+});
 </script>
         '''
-    elif p['id'] == 'people':
+
+    if p['id'] == 'people':
         hstr += \
         '''
 <script type="text/javascript">

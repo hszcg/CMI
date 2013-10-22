@@ -13,6 +13,31 @@
     <link rel='stylesheet' type='text/css' href='css/basic.css' media='screen' />
     
 <script type="text/javascript">
+$(function() {
+    $('a.expand-click').on('click', function(e) {
+        e.preventDefault();
+        var act_div = $(this).closest('.collapse-group').find('.hidden-div');
+        act_div.slideToggle();
+    });
+});
+</script>
+        
+<script type="text/javascript">
+$(function() {
+    $('#pub_nav button').on('click', function(e) {
+        var this_div = $(this);
+        $('#pub_nav button').removeClass('active');
+        this_div.addClass('active');
+
+        var active_val = this_div.val();
+        if (active_val === 'all') {
+            $('.box-item').show();
+        } else {
+            $('.box-item').hide();
+            $('.box-item[value='+active_val+']').show();
+        }
+    });
+});
 </script>
         
   </head>
@@ -26,33 +51,33 @@
       <div class="row top-nav">
         <ul class="nav navbar-nav">
           <li><a class='sep-line' >|</a></li>
-            <li ><a href="index.html">Home</a></li><li><a class="sep-line">|</a></li><li ><a href="intro.html">Introduction</a></li><li><a class="sep-line">|</a></li><li ><a href="staff.html">Staff</a></li><li><a class="sep-line">|</a></li><li ><a href="teaching.html">Teaching</a></li><li><a class="sep-line">|</a></li><li class="active"><a href="publication.html">Publication</a></li><li><a class="sep-line">|</a></li><li ><a href="competition.html">Competition</a></li><li><a class="sep-line">|</a></li><li ><a href="software.html">Software</a></li><li><a class="sep-line">|</a></li><li ><a href="opening.html">Opening</a></li><li><a class="sep-line">|</a></li>
+            <li ><a href="index.html">Home</a></li><li><a class="sep-line">|</a></li><li ><a href="intro.html">Introduction</a></li><li><a class="sep-line">|</a></li><li ><a href="announcements.html">Announcements</a></li><li><a class="sep-line">|</a></li><li ><a href="staff.html">Staff</a></li><li><a class="sep-line">|</a></li><li ><a href="teaching.html">Teaching</a></li><li><a class="sep-line">|</a></li><li class="active"><a href="publication.html">Publication</a></li><li><a class="sep-line">|</a></li><li ><a href="competition.html">Competition</a></li><li><a class="sep-line">|</a></li><li ><a href="software.html">Software</a></li><li><a class="sep-line">|</a></li><li ><a href="seminars.html">Seminars</a></li><li><a class="sep-line">|</a></li><li ><a href="opening.html">Opening</a></li><li><a class="sep-line">|</a></li>
         </ul>
       </div>
             
       <div class="row intro-row">
-        <div class="box-title box-ul">
-          <div id="so_netw" class="quick-div">
+        <div id="pub_nav" class="box-title btn-group">
+          <button value="all" class="btn btn-default quick-div active">
             <img src="images/publications_11.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> All Publications </span>
-          </div>
-          <div id="ma_trans" class="quick-div">
+          </button>
+          <button value="MT" class="btn btn-default quick-div">
             <img src="images/publications_07.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> Machine Translation </span>
-          </div>
-          <div id="im_proc" class="quick-div">
+          </button>
+          <button value="IP" class="btn btn-default quick-div">
             <img src="images/publications_05.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> Image Processing </span>
-          </div>
-          <div id="ma_learn" class="quick-div">
+          </button>
+          <button value="ML" class="btn btn-default quick-div">
             <img src="images/publications_09.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> Machine Learning </span>
-          </div>
+          </button>
           <!--
-          <div id="sp_reco" class="quick-div">
+          <button value="SR" class="btn btn-default quick-div">
             <img src="images/publications_05.gif" align="left" alt="CMI" style="float:none;height:32px;" />
             <span> Speech Recognition </span>
-          </div>
+          </button>
           -->
         </div>
             
@@ -64,57 +89,77 @@
 
         <div class="col-xs-12 ver-line-left">
             
-          <div class="box-item">
+          <div class="box-item collapse-group" value="MT">
             <div class="item-text">
               <p class="name">Bayesian Semi-Supervised Chinese Word Segmentation for Statistical Machine Translation</p>
               <p class="title"><a href="http://iiis.tsinghua.edu.cn/JiaXu/" target=_blank >Jia Xu</a></p>
               <p class="title">August 2008, Proceedings of the 22nd International Conference on Computational Linguistics</p>
               <p class="link"><a href="http://www-i6.informatik.rwth-aachen.de/~xujia/publications/semisupervisedCWS.pdf" target="_blank">http://www-i6.informatik.rwth-aachen.de/~xujia/publications/semisupervisedCWS.pdf</a></p>
-              <p class="detail">More Details</p>
+              <a class="details expand-click" href="#">View details &raquo;</a>
             </div>
+                <div class="item-text hidden-div" style="display:none;"><li style="margin-top: 5px;">Abstract</li><p class="details">aaaa</p><li style="margin-top: 5px;">Bibtex</li><p class="details">bbbb</p></div>
             <div class="clear-div"></div>
             <div class="dashed-line-h"></div>
           </div>
-                
-          <div class="box-item">
+            
+          <div class="box-item collapse-group" value="ML">
             <div class="item-text">
               <p class="name">A gold key #2</p>
               <p class="title"><a href="http://iiis.tsinghua.edu.cn/JiaXu/" target=_blank >Jia Xu</a></p>
               <p class="title">2013, Beijing</p>
               <p class="link"><a href="" target="_blank"></a></p>
-              <p class="detail">More Details</p>
+              <a class="details expand-click" href="#">View details &raquo;</a>
             </div>
+                <div class="item-text hidden-div" style="display:none;"><li style="margin-top: 5px;">Abstract</li><p class="details">just for fun</p></div>
             <div class="clear-div"></div>
             <div class="dashed-line-h"></div>
           </div>
-                
-          <div class="box-item">
+            
+          <div class="box-item collapse-group" value="MT">
             <div class="item-text">
               <p class="name">A gold key #3</p>
               <p class="title"><a href="http://iiis.tsinghua.edu.cn/JiaXu/" target=_blank >Jia Xu</a></p>
               <p class="title">2013, Beijing</p>
               <p class="link"><a href="" target="_blank"></a></p>
-              <p class="detail">More Details</p>
+              <a class="details expand-click" href="#">View details &raquo;</a>
             </div>
+                <div class="item-text hidden-div" style="display:none;"><li style="margin-top: 5px;">Abstract</li><p class="details">just for fun</p></div>
             <div class="clear-div"></div>
             <div class="dashed-line-h"></div>
           </div>
-                
-          <div class="box-item">
+            
+          <div class="box-item collapse-group" value="SN">
             <div class="item-text">
               <p class="name">A gold key #4</p>
               <p class="title"><a href="http://iiis.tsinghua.edu.cn/JiaXu/" target=_blank >Jia Xu</a></p>
               <p class="title">2013, Beijing</p>
               <p class="link"><a href="" target="_blank"></a></p>
-              <p class="detail">More Details</p>
+              <a class="details expand-click" href="#">View details &raquo;</a>
             </div>
+                <div class="item-text hidden-div" style="display:none;"><li style="margin-top: 5px;">Abstract</li><p class="details">just for fun</p></div>
             <div class="clear-div"></div>
             <div class="dashed-line-h"></div>
           </div>
-                
+            </div>
+        <div class="box-title box-ul">
+          <ul>
+            <li>Patent</li>
+          </ul>
         </div>
-      </div>
+
+        <div class="col-xs-12 ver-line-left">
             
+          <div class="box-item collapse-group" value="ML">
+            <div class="item-text">
+              <p class="name">test patent</p>
+              <p class="title">Jia Xu</p>
+              <a class="details expand-click" href="#">View details &raquo;</a>
+            </div>
+                <div class="item-text hidden-div" style="display:none;"><li style="margin-top: 5px;">Abstract</li><p class="details">test patent details</p></div>
+            <div class="clear-div"></div>
+            <div class="dashed-line-h"></div>
+          </div>
+            </div></div>
       <div class="row">
         <div class="separator-line"></div>
         <a href="http://www.iiis.tsinghua.edu.cn">
