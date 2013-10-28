@@ -17,6 +17,9 @@ structArr = {
             'announcement': [
                 {'id':'title', 'tip':'Congratulations&nbsp;to&nbsp;Guang&nbsp;Yang&nbsp;for&nbsp;winning&nbsp;the&nbsp;new&nbsp;scientist&nbsp;Tsinghua&nbsp;award!', 'size': 3},
                 {'id':'date', 'tip':'January&nbsp;1,&nbsp;2013', 'size': 1},
+                {'id':'time', 'tip':'12pm', 'size': 1},
+                {'id':'speaker', 'tip':'Bangsheng&nbsp;Tang', 'size': 1},
+                {'id':'venue', 'tip':'1-222&nbsp;FIT&nbsp;Building', 'size': 1},
                 {'id':'details', 'tip':'blah&nbsp;blah&nbsp;this&nbsp;may&nbsp;include&nbsp;HTML&nbsp;links&nbsp;and&nbsp;tags', 'size': 8},
                 ],
             },

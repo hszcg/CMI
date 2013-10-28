@@ -6,13 +6,13 @@ RELEASE_DIR = '../html/'
 FILE_NAME_ARR = [
         {'id': 'home', 'name': 'Home', 'link': 'index.html'},
         {'id': 'intro', 'name': 'Introduction', 'link': 'intro.html'},
-        {'id': 'announcements', 'name': 'Announcements', 'link': 'announcements.html'},
         {'id': 'staff', 'name': 'Staff', 'link': 'staff.html'},
         {'id': 'teaching', 'name': 'Teaching', 'link': 'teaching.html'},
         {'id': 'papers', 'name': 'Publication', 'link': 'publication.html'},
         {'id': 'competition', 'name': 'Competition', 'link': 'competition.html'},
         {'id': 'software', 'name': 'Software', 'link': 'software.html'},
         {'id': 'seminars', 'name': 'Seminars', 'link': 'seminars.html'},
+        {'id': 'announcements', 'name': 'Announcements', 'link': 'announcements.html'},
         {'id': 'opening', 'name': 'Opening', 'link': 'opening.html'},
         ]
 HOME_LIMIT = 3
@@ -76,7 +76,7 @@ def gen_body_home(p, data):
         if t == []:
             continue
         else:
-            hstr += '<li>%s</li>' % t['title']
+            hstr += '<li>%s</br>%s</li>' % (t['title'], format_app_str(t))
             index += 1
             if index >= HOME_LIMIT:
                 break
@@ -133,7 +133,7 @@ def gen_body_seminars(p, data):
             '''
         <div class="box-title box-ul">
           <ul>
-            <li>Seminars</li>
+            <li>Machine Learning Seminars</li>
           </ul>
         </div>
 
@@ -179,6 +179,18 @@ def gen_body_seminars(p, data):
     return hstr
 
 
+def format_app_str(t):
+    arr = []
+    if t['speaker'] != '':
+        arr.append('Speaker: %s' % t['speaker'])
+    if t['venue'] != '':
+        arr.append('Venue: %s' % t['venue'])
+    if t['date'] != '':
+        arr.append('Date: %s' % t['date'])
+    app_str = '</br>'.join(arr)
+    return app_str
+
+
 def gen_body_announcements(p, data):
     hstr = ''
     hstr += '<div class="row intro-row">'
@@ -201,15 +213,15 @@ def gen_body_announcements(p, data):
               <div class="col-xs-8">
                 <p>%s</p>
               </div>
-              <div class="col-xs-2">
+              <div class="col-xs-1">
               </div>
-              <div class="col-xs-2">
+              <div class="col-xs-3">
                 <p>%s</p>
               </div>
               <div class="clear-div"></div>
             </div>
           </div>
-                ''' % (t['details'], t['date'])
+                ''' % (t['details'], format_app_str(t))
         
         hstr += '</div>'
 
