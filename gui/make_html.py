@@ -441,64 +441,26 @@ def gen_body_teaching(p, data):
             '''
 
     index = 0
-    id_str = \
-            '''
-          <div id="myCarousel" class="carousel slide">
-          <!-- Indicators -->
-            <ol class="carousel-indicators">
-            '''
     bg_str = \
             '''
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
             '''
 
     for t in data['teaching']['photo']:
-        active_str = ''
-        if index == 0:
-            active_str = ' class="active"'
-        id_str += \
-                '''
-          <li data-target="#myCarousel" data-slide-to="%s"%s></li>
-                ''' % (index, active_str)
-
-        active_str = ''
-        if index == 0:
-            active_str = ' active'
         bg_str += \
                 '''
-          <div class="item%s">
-            <div class="fill" style="background-image:url('%s');"></div>
-            <div class="carousel-caption">
-              <h1>%s</h1>
-            </div>
-          </div>
-                ''' % (active_str, t['photo'], t['title'])
+            <a data-toggle="lightbox" data-title="%s" href="%s" data-gallery="teachingimages" class="col-xs-4">
+            <img src="%s" alt="Click to view the lightbox" class="img-responsive">
+            </a>
+                ''' % (t['title'], t['photo'], t['photo'])
         
         index += 1
 
-    id_str += '</ol>'
-
-    bg_str += \
-            '''
-        </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-          <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-          <span class="icon-next"></span>
-        </a>
-    </div>
-            '''
-
-    hstr += id_str
     hstr += bg_str
 
     hstr += \
             '''
           </div>
+          <div class="clear-div"></div>
         </div>
             '''
     hstr += '</div>'
@@ -733,6 +695,7 @@ def gen_header(p):
 
     <script type='text/javascript' src='js/jquery.js'></script>
     <script type='text/javascript' src='js/bootstrap.js'></script>
+    <script type='text/javascript' src='js/lightbox.js'></script>
     <script type='text/javascript' src='js/basic.js'></script>
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen" />
