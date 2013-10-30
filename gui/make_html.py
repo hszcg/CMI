@@ -49,8 +49,8 @@ def gen_body_home(p, data):
 
     hstr += \
             '''
-      <div class="row">
-        <div class="col-xs-6 ver-line-right">
+      <div class="row" style="display:table;">
+        <div class="col-xs-6 ver-line-right" style="display: table-cell; min-height: 100%; float: none;">
           <div class="box-title">
             '''
 
@@ -62,7 +62,7 @@ def gen_body_home(p, data):
             '''
           </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-6" style="display: table-cell; float: none;">
           <div>
             <div class="box-title">
               <h4>News</h4>
@@ -210,18 +210,18 @@ def gen_body_announcements(p, data):
                 '''
           <div class="box-item">
             <div class="item-text bg-green">
-              <div class="col-xs-8">
+              <div class="col-xs-3">
                 <p>%s</p>
               </div>
               <div class="col-xs-1">
               </div>
-              <div class="col-xs-3">
+              <div class="col-xs-8">
                 <p>%s</p>
               </div>
               <div class="clear-div"></div>
             </div>
           </div>
-                ''' % (t['details'], format_app_str(t))
+                ''' % (format_app_str(t), t['details'])
         
         hstr += '</div>'
 
