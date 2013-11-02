@@ -43,7 +43,7 @@ def gen_body_home(p, data):
     hstr += \
             '''
       <div class="row">
-        <img class="full_width" src="images/bg.png" alt="CMI"/>
+        <img class="full_width" src="images/bg.jpg" alt="CMI"/>
       </div>
             '''
 
