@@ -14,7 +14,8 @@ Including Content Management Tools and HTML Auto-generation Tools from JSON data
 
 ## Content Management Tools
 + **Directory**
-gui/
+CMI_ROOT/ is for CMI Lab Page
+JiaXu_ROOT/ is for JiaXu's Home Page
 
 + **Usage**
 ```
