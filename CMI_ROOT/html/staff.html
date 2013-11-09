@@ -13,6 +13,17 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen" />
     <link rel='stylesheet' type='text/css' href='css/basic.css' media='screen' />
     
+<script type="text/javascript">
+$(function() {
+    $('#alumi-expand-div').hide();
+
+    $('#alumi-expand-btn').on('click', function(e) {
+        $(this).hide();
+        $('#alumi-expand-div').show();
+    });
+});
+</script>
+        
   </head>
   <body>
     <div class="container">
@@ -54,10 +65,10 @@
                 <div style="min-height: 120px; margin-top: 5px;"><div class="col-xs-12 ver-line-left"></div></div>
         <div class="box-title box-ul">
           <ul>
-            <li>Alumi</li>
+            <li>Alumi<a id="alumi-expand-btn" href="javascript:void(0)">&nbsp; View details &raquo;</a></li>
           </ul>
         </div>
-            <div style="min-height: 120px; margin-top: 5px;"><div class="col-xs-12 ver-line-left"></div></div></div>
+            <div id="alumi-expand-div" style="min-height:120px; margin-top: 5px;"><div class="col-xs-12 ver-line-left"></div></div></div>
       <div class="row">
         <div class="separator-line"></div>
         <a href="http://www.iiis.tsinghua.edu.cn">

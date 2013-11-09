@@ -4,18 +4,20 @@ import codecs
 
 RELEASE_DIR = '../html/'
 FILE_NAME_ARR = [
-        {'id': 'home', 'name': 'Home', 'link': 'index.html'},
-        {'id': 'intro', 'name': 'Introduction', 'link': 'intro.html'},
-        {'id': 'staff', 'name': 'Staff', 'link': 'staff.html'},
-        {'id': 'teaching', 'name': 'Teaching', 'link': 'teaching.html'},
-        {'id': 'papers', 'name': 'Publication', 'link': 'publication.html'},
-        {'id': 'competition', 'name': 'Competition', 'link': 'competition.html'},
-        {'id': 'software', 'name': 'Software', 'link': 'software.html'},
-        {'id': 'seminars', 'name': 'Seminars', 'link': 'seminars.html'},
-        {'id': 'announcements', 'name': 'Announcements', 'link': 'announcements.html'},
-        {'id': 'opening', 'name': 'Opening', 'link': 'opening.html'},
-        ]
-HOME_LIMIT = 3
+    {'id': 'home', 'name': 'Home', 'link': 'index.html'},
+    {'id': 'intro', 'name': 'Introduction', 'link': 'intro.html'},
+    {'id': 'staff', 'name': 'Staff', 'link': 'staff.html'},
+    {'id': 'teaching', 'name': 'Teaching', 'link': 'teaching.html'},
+    {'id': 'papers', 'name': 'Publication', 'link': 'publication.html'},
+    {'id': 'competition', 'name':
+     'Competition', 'link': 'competition.html'},
+    {'id': 'software', 'name': 'Software', 'link': 'software.html'},
+    {'id': 'seminars', 'name': 'Seminars', 'link': 'seminars.html'},
+    {'id': 'announcements', 'name':
+     'Announcements', 'link': 'announcements.html'},
+    {'id': 'opening', 'name': 'Opening', 'link': 'opening.html'},
+]
+HOME_LIMIT = 1
 PAGE_LIMIT = 10
 
 
@@ -116,7 +118,7 @@ def gen_body_intro(p, data):
         </div>
       </div>
             ''' % t['details']
-    
+
     hstr += \
             '''
       <div class="row intro-row">
@@ -151,7 +153,7 @@ def gen_body_seminars(p, data):
                     <p class="title">%s</p>
                     <p class="title">Speaker: <a href="%s" target="_blank">%s</a></p>
                     <p class="title">Place: %s, Time: %s</p>
-                    <a class="details expand-click" href="#">View details &raquo;</a>
+                    <a class="details expand-click" href="javascript:void(0)">View details &raquo;</a>
                   </div>
                 ''' % (t['title'], t['date'], t['speaker_homepage'], t['speaker'], t['venue'], t['time'])
 
@@ -164,7 +166,8 @@ def gen_body_seminars(p, data):
         if t['urls'] != '':
             hstr += '<li style="margin-top: 5px;">Links</li>'
             for u in t['urls'].split(','):
-                hstr += '<p class="details"><a href="%s" target="_blank">%s</a></p>' % (u, u)
+                hstr += '<p class="details"><a href="%s" target="_blank">%s</a></p>' % (
+                    u, u)
         hstr += '</div>'
 
         hstr += \
@@ -173,7 +176,7 @@ def gen_body_seminars(p, data):
                   <div class="dashed-line-h"></div>
                 </div>
                 '''
-        
+
     hstr += '</div>'
 
     return hstr
@@ -222,7 +225,7 @@ def gen_body_announcements(p, data):
             </div>
           </div>
                 ''' % (format_app_str(t), t['details'])
-        
+
         hstr += '</div>'
 
     hstr += '</div>'
@@ -279,18 +282,20 @@ def gen_body_staff(p, data):
                 continue
             hstr += '<div class="box-people">'
             if t['photo'] != '':
-                hstr += '<img src="%s" style="width:75px;float:left;" alt=""/>' % t['photo']
+                hstr += '<img src="%s" style="width:75px;float:left;" alt=""/>' % t[
+                    'photo']
             hstr += '<div class="people-text bg-purple">'
             hstr += '<p class="name">%s</p>' % t['name']
             hstr += '<p class="title">%s</p>' % t['role']
-            hstr += '<p class="link"><a href="%s" target="_blank">%s</a></p>' % (t['homepage'], t['homepage'])
+            hstr += '<p class="link"><a href="%s" target="_blank">%s</a></p>' % (
+                t['homepage'], t['homepage'])
             if t['interest'] != '':
                 hstr += '<p class="interest">%s</p>' % t['interest']
             if t['details'] != '':
                 hstr += '<p class="details">%s</p>' % t['details']
             hstr += '</div>'
             hstr += '</div>'
-            
+
         hstr += '</div>'
         hstr += '</div>'
 
@@ -298,31 +303,35 @@ def gen_body_staff(p, data):
             '''
         <div class="box-title box-ul">
           <ul>
-            <li>Alumi</li>
+            <li>Alumi<a id="alumi-expand-btn" href="javascript:void(0)">&nbsp; View details &raquo;</a></li>
           </ul>
         </div>
             '''
 
-    hstr += '<div style="min-height: 120px; margin-top: 5px;">'
+    hstr += '<div id="alumi-expand-div" style="min-height:120px; margin-top: 5px;">'
     hstr += '<div class="col-xs-12 ver-line-left">'
     for t in data['staff']['alumi']:
         if t == []:
             continue
         hstr += '<div class="box-people">'
         if t['photo'] != '':
-            hstr += '<img src="%s" style="width:75px;float:left;" alt=""/>' % t['photo']
-        hstr += '<div class="people-text bg-purple">'
+            hstr += '<img src="%s" style="width:75px;float:left;" alt=""/>' % t[
+                'photo']
+            hstr += '<div class="people-text bg-purple" >'
+        else:
+            hstr += '<div class="people-text bg-purple" style="margin-left: 0px;>'
         hstr += '<p class="name">%s</p>' % t['name']
         hstr += '<p class="title">%s</p>' % t['role']
         hstr += '<p class="title">%s</p>' % t['current_affiliation']
-        hstr += '<p class="link"><a href="%s" target="_blank">%s</a></p>' % (t['current_homepage'], t['current_homepage'])
+        hstr += '<p class="link"><a href="%s" target="_blank">%s</a></p>' % (
+            t['current_homepage'], t['current_homepage'])
         if t['interest'] != '':
             hstr += '<p class="interest">%s</p>' % t['interest']
         if t['details'] != '':
             hstr += '<p class="details">%s</p>' % t['details']
         hstr += '</div>'
         hstr += '</div>'
-    
+
     hstr += '</div>'
     hstr += '</div>'
 
@@ -347,7 +356,8 @@ def gen_body_teaching(p, data):
     for t in data['teaching']['lecture']:
         title_html = t['title']
         if t['urls'] != '':
-            title_html = '<a href="%s" target=_blank >%s</a>' % (t['urls'].split(',')[0], t['title'])
+            title_html = '<a href="%s" target=_blank >%s</a>' % (
+                t['urls'].split(',')[0], t['title'])
 
         hstr += \
                 '''
@@ -366,7 +376,7 @@ def gen_body_teaching(p, data):
                 <p>%s</p>
               </div>
               <div class="col-xs-2">
-                <a class="details expand-click" href="#">View details &raquo;</a>
+                <a class="details expand-click" href="javascript:void(0)">View details &raquo;</a>
               </div>
               <div class="clear-div"></div>
             </div>
@@ -412,7 +422,7 @@ def gen_body_teaching(p, data):
                 <p>%s</p>
               </div>
               <div class="col-xs-2">
-                <a class="details expand-click" href="#">View details &raquo;</a>
+                <a class="details expand-click" href="javascript:void(0)">View details &raquo;</a>
               </div>
               <div class="clear-div"></div>
             </div>
@@ -452,7 +462,7 @@ def gen_body_teaching(p, data):
             <img src="%s" alt="Click to view the lightbox" class="img-responsive">
             </a>
                 ''' % (t['title'], t['photo'], t['photo'])
-        
+
         index += 1
 
     hstr += bg_str
@@ -484,7 +494,7 @@ def gen_body_software(p, data):
     index = 0
     for t in data['software']['items']:
         color = 'bg-green'
-        if index%2 == 0:
+        if index % 2 == 0:
             color = 'bg-yellow'
         index += 1
 
@@ -504,7 +514,7 @@ def gen_body_software(p, data):
               <div class="col-xs-2">
               </div>
               <div class="col-xs-2">
-                <a class="details expand-click" href="#">View details &raquo;</a>
+                <a class="details expand-click" href="javascript:void(0)">View details &raquo;</a>
               </div>
               <div class="clear-div"></div>
             </div>
@@ -517,7 +527,7 @@ def gen_body_software(p, data):
               <div class="clear-div"></div>
             </div>
           </div>
-                ''' % (color, t['title'], trans_author_str(t['author']), t['date'], color,t['abstract'])
+                ''' % (color, t['title'], trans_author_str(t['author']), t['date'], color, t['abstract'])
 
     hstr += '</div>'
 
@@ -528,7 +538,8 @@ def trans_author_str(in_str):
     temp_arr = []
     for tt in in_str.split(','):
         if '#' in tt:
-            temp_arr.append('<a href="%s" target=_blank >%s</a>' % (tt.split('#')[1], tt.split('#')[0]))
+            temp_arr.append('<a href="%s" target=_blank >%s</a>' %
+                            (tt.split('#')[1], tt.split('#')[0]))
         else:
             temp_arr.append(tt)
 
@@ -559,11 +570,12 @@ def gen_body_competition(p, data):
         hstr += '<p class="detail">%s</p>' % t['details_html']
         hstr += '</div>'
         if t['photo'] != '':
-            hstr += '<img src="%s" alt="CMI" style="width:400px;margin-left:65px;"/>' % t['photo']
+            hstr += '<img src="%s" alt="CMI" style="width:400px;margin-left:65px;"/>' % t[
+                'photo']
         hstr += '<div class="clear-div"></div>'
         hstr += '<div class="dashed-line-h"></div>'
         hstr += '</div>'
-    
+
     hstr += '</div>'
     hstr += '</div>'
 
@@ -621,7 +633,7 @@ def gen_body_papers(p, data):
               <p class="title">%s</p>
               <p class="title">%s, %s</p>
               <p class="link"><a href="%s" target="_blank">%s</a></p>
-              <a class="details expand-click" href="#">View details &raquo;</a>
+              <a class="details expand-click" href="javascript:void(0)">View details &raquo;</a>
             </div>
                 ''' % (t['category'], t['title'], trans_author_str(t['author']), t['date'], t['venue'], t['paper_url'], t['fullpaper_url'])
 
@@ -660,7 +672,7 @@ def gen_body_papers(p, data):
             <div class="item-text">
               <p class="name">%s</p>
               <p class="title">%s</p>
-              <a class="details expand-click" href="#">View details &raquo;</a>
+              <a class="details expand-click" href="javascript:void(0)">View details &raquo;</a>
             </div>
                 ''' % (t['category'], t['title'], trans_author_str(t['author']))
 
@@ -774,10 +786,18 @@ $(function() {
 </script>
         '''
 
-    if p['id'] == 'people':
+    if p['id'] == 'staff':
         hstr += \
         '''
 <script type="text/javascript">
+$(function() {
+    $('#alumi-expand-div').hide();
+
+    $('#alumi-expand-btn').on('click', function(e) {
+        $(this).hide();
+        $('#alumi-expand-div').show();
+    });
+});
 </script>
         '''
     return hstr
@@ -785,7 +805,7 @@ $(function() {
 
 def gen_footer(p, data):
     hstr = ''
-    
+
     hstr += \
             '''
       <div class="row">
@@ -805,5 +825,3 @@ def gen_footer(p, data):
             '''
 
     return hstr
-
-
