@@ -36,6 +36,7 @@ structArr = {
                 {'id':'speaker_homepage', 'tip':'http://link.com', 'size': 1},
                 {'id':'speaker_bio', 'tip':'blabla', 'size': 5},
                 {'id':'speaker_photo', 'tip':'image/weiyu.jpg', 'size': -1},
+                {'id':'slide', 'tip':'file/intro.ppt', 'size': -2},
                 ],
             },
         'intro': {
@@ -141,6 +142,8 @@ FILE_NAME = 'data.json'
 BACKUP_NAME = 'data.json.bak'
 IMG_DIR = '../html/img/'
 HTML_IMG_DIR = 'img/'
+FILE_DIR = '../html/file/'
+HTML_FILE_DIR = 'file/'
 
 class MainWin(QtGui.QWidget):
     def __init__(self):
@@ -279,10 +282,17 @@ class MainWin(QtGui.QWidget):
                 textItem.setToolTip("<a style='font-size: 14px'>%s</a>" % t['tip'])
                 self.listDetail.addWidget(textItem, index, 1)
                 self.imgPathItem = None
-            else:
+            elif t['size'] == -1: # Open Image Dialog
                 textItem.setMaximumHeight(labelItem.sizeHint().height() * 3)
                 openButton = QtGui.QPushButton("Open")
-                openButton.clicked.connect(self._slotOpenClicked)
+                openButton.clicked.connect(self._slotOpenImageClicked)
+                self.listDetail.addWidget(textItem, index, 1)
+                self.listDetail.addWidget(openButton, index, 2)
+                self.imgPathItem = textItem
+            elif t['size'] == -2: # Open File Dialog
+                textItem.setMaximumHeight(labelItem.sizeHint().height() * 3)
+                openButton = QtGui.QPushButton("Open")
+                openButton.clicked.connect(self._slotOpenFileClicked)
                 self.listDetail.addWidget(textItem, index, 1)
                 self.listDetail.addWidget(openButton, index, 2)
                 self.imgPathItem = textItem
@@ -290,7 +300,7 @@ class MainWin(QtGui.QWidget):
             index += 1
     
 
-    def _slotOpenClicked(self, item):
+    def _slotOpenImageClicked(self, item):
         fileName = QtGui.QFileDialog.getOpenFileName(
                 self,self.tr("Open Image"), '',
                 self.tr("Image Files(*.png *.jpg *.jpeg *.bmp)"))
@@ -310,6 +320,29 @@ class MainWin(QtGui.QWidget):
         shutil.copy2(fileName, tarName)
         
         tarName = "%s%s/%s%d.%s" % (HTML_IMG_DIR, self.keyA, base, index, ext)
+        self.imgPathItem.setPlainText(tarName)
+
+
+    def _slotOpenFileClicked(self, item):
+        fileName = QtGui.QFileDialog.getOpenFileName(
+                self,self.tr("Open File"), '',
+                self.tr("All Files(*.*)"))
+        if fileName == '':
+            return
+        fileInfo = QtCore.QFileInfo(fileName)
+        base = unicode(fileInfo.baseName())
+        ext = unicode(fileInfo.completeSuffix())
+        index = 0
+        while True:
+            tarName = "%s%s/%s%d.%s" % (FILE_DIR, self.keyA, base, index, ext)
+            print tarName
+            tarInfo = QtCore.QFileInfo(tarName)
+            if tarInfo.exists() != True:
+                break
+            index += 1
+        shutil.copy2(fileName, tarName)
+        
+        tarName = "%s%s/%s%d.%s" % (HTML_FILE_DIR, self.keyA, base, index, ext)
         self.imgPathItem.setPlainText(tarName)
 
 

@@ -158,6 +158,8 @@ def gen_body_seminars(p, data):
                 ''' % (t['title'], t['date'], t['speaker_homepage'], t['speaker'], t['venue'], t['time'])
 
         hstr += '<div class="item-text hidden-div" style="display:none;">'
+        if t['slide'] != '':
+            hstr += '<p class="details"><a href="%s" target="_blank">Download Slide</a></p>' % (t['slide'])
         hstr += '<li style="margin-top: 5px;">Abstract</li>'
         hstr += '<p class="details">%s</p>' % t['abstract']
         if t['speaker_bio'] != '':
@@ -284,6 +286,9 @@ def gen_body_staff(p, data):
             if t['photo'] != '':
                 hstr += '<img src="%s" style="width:75px;float:left;" alt=""/>' % t[
                     'photo']
+                hstr += '<div class="people-text bg-purple" >'
+            else:
+                hstr += '<div class="people-text bg-purple" style="margin-left: 0px;>'
             hstr += '<div class="people-text bg-purple">'
             hstr += '<p class="name">%s</p>' % t['name']
             hstr += '<p class="title">%s</p>' % t['role']
